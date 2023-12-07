@@ -18,7 +18,6 @@ test('api login success', async ({ request }) => {
     
     console.log(actualToken);
 
-
     const { token } = content;
     const getResponse = await request.get('https://stage.helpdesk.hypertalk.net/api/me', {
 
