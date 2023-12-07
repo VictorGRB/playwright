@@ -102,7 +102,8 @@ test('mute button', async ({ page }) => {
 });
 
 test('create appointment', async ({ page }) => {
-    
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    await delay(1000);
     await page.goto(" ");
     await expect(page).toHaveURL(/dashboard/);
     //create appointment
@@ -127,11 +128,9 @@ test('create appointment', async ({ page }) => {
 
 test('NEGATIVE: create overlapping appointment', async ({ page }) => {
     //login
+    // const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    // await delay(1000);
     await page.goto(" ");
-    // await page.getByLabel('Email *').fill('victor.garbo@hpm.ro');
-    // await page.getByLabel('Password *').fill('Victor123!');
-    // await page.getByRole('button', { name: 'LOGIN' }).click();
-
     await expect(page).toHaveURL(/dashboard/);
 
     //create appointment
@@ -175,6 +174,8 @@ test('delete appointment', async ({ page }) => {
 
 test('create operator', async ({ page }) => {
 
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    await delay(1000);
     await page.goto(" ");
     await page.getByText('Operators').click();
 
@@ -189,6 +190,8 @@ test('create operator', async ({ page }) => {
 
 test('NEGATIVE: create duplicate operator', async ({ page }) => {
 
+    // const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    // await delay(1000);
     await page.goto(" ");
     await page.getByText('Operators').click();
     await expect(page).toHaveURL(/operators/);

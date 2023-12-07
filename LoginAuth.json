@@ -26,7 +26,7 @@
         },
         {
           "name": "HELPDESK_OPERATOR_TOKEN",
-          "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7Il9pZCI6IjYyODFmZjhiNTU5ZTRlOWNmMDhiY2MwYyIsInBlcm1pc3Npb24iOiJhZG1pbiJ9LCJpYXQiOjE3MDE4NzQwNzUsImV4cCI6MTcwMTg3NzY3NSwiYXVkIjoic3RhZ2UuaGVscGRlc2suaHlwZXJ0YWxrLm5ldF9zdGFnaW5nIiwiaXNzIjoiSGVscERlc2sifQ.Dh6OS2bwPgjoBbdhZk2Esp-dqLcJp9sctJnY4mzevvChmdOUPATMty_4ZxqOg6J0UFgWZcGTUeAKyg4duuLWg5tq3RMqRcyMswbVUWFG6oD_-xgMpkK3t41qEG7ifu4ZoTNPvYfcLJ7bwJFpujM8y59dPaP9rIYIXVX6xcn_-kHpNlQwMJzbMs6wi5vP3wLUNLgVcSP3F-wfTbD6AfbT-nEGVLe5U_BREqj6cTNL4jHl3ugm3RNYsduJoejDXHgTRlvXZgjQ3ofdaaOYfkKRbp8TuwsSRBh8KU4b8EAomKJFkSvWluMR-afhy-tvSmiBHoXMFscOQaC-3c7xGSW_pQ"
+          "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7Il9pZCI6IjYyODFmZjhiNTU5ZTRlOWNmMDhiY2MwYyIsInBlcm1pc3Npb24iOiJhZG1pbiJ9LCJpYXQiOjE3MDE5NTYwNDUsImV4cCI6MTcwMTk1OTY0NSwiYXVkIjoic3RhZ2UuaGVscGRlc2suaHlwZXJ0YWxrLm5ldF9zdGFnaW5nIiwiaXNzIjoiSGVscERlc2sifQ.C0g-9AYkxHR8OZZe6gC29SQA-dTAWwiWklk4gtLcAdGjxwz8lYgAeatJsZws-fzXB-qpTXMjEDSgbyVPwTm_9J8XFUebqn8eBXexh1EFzgbA7sJPykApz3TtHFD8eUDRWdF1n6qzyoc20zd6FToO6DrrtmR95XgHUEIbSURABvYGrFL8Aw9UYwJu9rYB9oVIRZg9Xc9cG3tVTYM_4PQkBGkGzQw-VIpZnKBRPZprIQSo6uX_0wCGaU8egfNqEXx__iIxWl6DobhyrBEmcj90IpUNiYJclId7tDGwAmXgE4T9ZQ09RrlfAYUkfqIfNY6Chvvr-1gNiOM-m-O8QgGLKQ"
         },
         {
           "name": "HELPDESK_OPERATOR_PERMISSION",
@@ -34,7 +34,7 @@
         },
         {
           "name": "HELPDESK_OPERATOR_REFRESH_TOKEN",
-          "value": "e9123d6c15ce4f9c2bac16feb072f1fb080b771c0433dfa0dadd2d3c247f9a8fd122b1d5901325812e0505ca3e4f3cd6"
+          "value": "e3a7cafab26bdcfc2093edc877ca69a8a4239a0165ac4ef432449240d99b2351354f7b5dce94dcbed57eeab1207b422a"
         }
       ]
     }
