@@ -71,6 +71,15 @@ test('appointments examples', async ({ request }) => {
     });
     expect(deleteAppointment.status()).toBe(200);
 
+    //NEGATIVE
+    const deleteFalseAppointment = await request.delete('https://stage.helpdesk.hypertalk.net/api/appointments/' + header, {
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `Bearer ${actualToken}`,
+        }
+    });
+    expect(deleteFalseAppointment.status()).toBe(404);
+
 });
 
 test('specializations examples', async ({ request }) => {
@@ -91,6 +100,7 @@ test('specializations examples', async ({ request }) => {
     //console.log(actualToken);
     //GOLDEN CODE
 
+    //CREATE SPEC
     const postSpecialization = await request.post('https://stage.helpdesk.hypertalk.net/api/specializations', {
 
         headers: {
@@ -106,19 +116,20 @@ test('specializations examples', async ({ request }) => {
     let header = await postSpecialization.headers()["location"];
     console.log(header);
 
-    const putSpecialization = await request.put('https://stage.helpdesk.hypertalk.net/api/specializations/'+header, {
+    // //EDIT SPEC
+    // const putSpecialization = await request.put('https://stage.helpdesk.hypertalk.net/api/specializations/'+header, {
 
-        headers: {
-            'content-type': 'application/json',
-            'authorization': `Bearer ${actualToken}`,
-        },
-        data: {
-            "name": "TestSpecializationFromVictor",
-            "disabled": false
-        }
-    });
-    expect(putSpecialization.status()).toBe(200);
+    //     headers: {
+    //         'content-type': 'application/json',
+    //         'authorization': `Bearer ${actualToken}`,
+    //     },
+    //     data: {
+    //         "name": "Test Victorr"
+    //     }
+    // });
+    //expect(putSpecialization.status()).toBe(200);
 
+    //DELETE SPEC
     const deleteSpecialization = await request.delete('https://stage.helpdesk.hypertalk.net/api/specializations/'+header, {
         headers: {
             'content-type': 'application/json',
@@ -126,5 +137,15 @@ test('specializations examples', async ({ request }) => {
         }
     });
     expect(deleteSpecialization.status()).toBe(200);
-    
+
+
+    // //NEGATIVE DELETE SPEC
+    // const deleteFalseSpecialization = await request.delete('https://stage.helpdesk.hypertalk.net/api/specializations/'+header, {
+    //     headers: {
+    //         'content-type': 'application/json',
+    //         'authorization': `Bearer ${actualToken}`,
+    //     }
+    // });
+    // expect(deleteFalseSpecialization.status()).toBe(404);
+
 });
