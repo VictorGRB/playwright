@@ -6,4 +6,4 @@ test('dashboard', async ({ page }) => {
     await page.goto(" ");
     await expect(page).toHaveScreenshot();
 
-});
+}); 
