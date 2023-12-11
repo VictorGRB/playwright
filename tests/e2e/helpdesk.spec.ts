@@ -10,7 +10,7 @@ import { test, expect } from '@playwright/test';
 // });
 test('logout', async ({ page }) => {
 
-    
+
     await page.goto(" ");
     await page.getByRole('button', { name: 'profile picture' }).click();
     await page.getByRole('menuitem', { name: 'Logout' }).click();
@@ -21,6 +21,7 @@ test('logout', async ({ page }) => {
     // expect.soft(page.locator('[id="mat-input-2"]')).toHaveText('HelpDesk');
     //await page.getByText("HelpDesk").
     await expect(page.getByText('HelpDesk') !== undefined).toBeTruthy();
+    await expect(page.getByText('HelpDesk')).toBeVisible();
     //await page.locator('#login-title-container').textContent();
     //expect(page.locator('[id="mat-input-2"]')).toHaveText('HelpDesk');
     //*[@id="login-title-container"]/span
