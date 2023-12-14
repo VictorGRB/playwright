@@ -72,3 +72,13 @@ test('user status', async ({ page }) => {
     await expect(await page.locator('#status-button').screenshot()).toMatchSnapshot('user status.png');
 
 });  
+
+test('change password page', async ({ page }) => {
+
+    await page.goto(" ");
+    await expect(page.getByText('Speech recognition')).toBeVisible();
+    await page.waitForTimeout(1000)
+    await page.getByText('vpn_key').click();
+    await expect(await page.locator('[role="dialog"]').screenshot()).toMatchSnapshot('change password.png');
+
+});  
