@@ -51,7 +51,7 @@ test('callers waiting', async ({ page }) => {
     await page.goto(" ");
     await expect(page.getByText('Speech recognition')).toBeVisible();
     await page.waitForTimeout(1000)
-    await expect(await page.locator(':text-is("Callers waiting:")').screenshot()).toMatchSnapshot('callers.png');
+    await expect(await page.locator(':text-is("Callers waiting:")').screenshot({mask:[page.locator('#number-of-callers-waiting')]})).toMatchSnapshot('callers.png');
 
 });  
 
