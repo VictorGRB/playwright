@@ -12,12 +12,12 @@ test('get api examples', async ({ request }) => {
     });
     expect(response.status()).toBe(200);
     await expect(response).toBeOK();
-    //GOLDEN CODE
+    //{GOLDEN CODE}
     const content = await response.json();
     console.log(content);
     let actualToken = content.jwt;
     console.log(actualToken);
-    //GOLDEN CODE
+    //{/GOLDEN CODE}
 
     const { token } = content;
     const getMeResponse = await request.get('https://stage.helpdesk.hypertalk.net/api/me', {
