@@ -12,7 +12,7 @@ test('get api examples', async ({ request }) => {
     });
     expect(response.status()).toBe(200);
     await expect(response).toBeOK();
-    //{GOLDEN CODE}
+    //{GOLDEN CODE} - will store certain values from a response into a useable variable
     const content = await response.json();
     console.log(content);
     let actualToken = content.jwt;
