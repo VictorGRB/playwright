@@ -29,7 +29,7 @@ test('get api examples', async ({ request }) => {
 
     });
     expect(getMeResponse.status()).toBe(200);
-
+//
     const getUsersResponse = await request.get('https://stage.helpdesk.hypertalk.net/api/users', {
 
         headers:{
@@ -39,7 +39,7 @@ test('get api examples', async ({ request }) => {
 
     });
     expect(getUsersResponse.status()).toBe(200);
-
+//
     const getOperatorsResponse = await request.get('https://stage.helpdesk.hypertalk.net/api/operators', {
 
         headers:{

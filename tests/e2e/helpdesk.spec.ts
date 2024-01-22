@@ -8,11 +8,25 @@ import { test, expect } from '@playwright/test';
 //     await page.getByRole('button', { name: 'New appointment' }).click();
 
 // });
+test('login success', async ({ page }) => {
+
+    await page.goto(" ");
+    await page.getByRole('button', { name: 'profile picture' }).click();
+    await page.getByRole('menuitem', { name: 'Logout' }).click();
+    await page.getByLabel('Email *').fill('victor.garbo@hpm.ro');
+    await page.getByLabel('Password *').fill('Victor123!');
+    await page.getByRole('button', { name: 'LOGIN' }).click();
+    await expect(page).toHaveURL(/dashboard/);
+
+});
+
+
 test('logout', async ({ page }) => {
 
 
     await page.goto(" ");
     await page.getByRole('button', { name: 'profile picture' }).click();
+    //await page.locator('button').filter({ hasText: 'person' }).click();
     await page.getByRole('menuitem', { name: 'Logout' }).click();
     //expect(page.locator('[id="mat-input-2"]')).toContainText('HelpDesk');
     // expect.soft(page.locator('#login-title-container')).toContainText('HelpDesk');
@@ -20,8 +34,8 @@ test('logout', async ({ page }) => {
     // expect.soft(page.locator('[id="mat-input-2"]')).toContainText('HelpDesk');
     // expect.soft(page.locator('[id="mat-input-2"]')).toHaveText('HelpDesk');
     //await page.getByText("HelpDesk").
-    await expect(page.getByText('HelpDesk') !== undefined).toBeTruthy();
-    await expect(page.getByText('HelpDesk')).toBeVisible();
+    //await expect(page.getByText('HelpDesk') !== undefined).toBeTruthy();
+    await expect(page.getByText('HelpDesk Powered by')).toBeVisible();
     //await page.locator('#login-title-container').textContent();
     //expect(page.locator('[id="mat-input-2"]')).toHaveText('HelpDesk');
     //*[@id="login-title-container"]/span

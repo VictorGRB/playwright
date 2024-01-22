@@ -11,9 +11,10 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
 
-  // expect: {
-  //   timeout: 20 * 1000,
-  // },
+  // timeout:80000,
+  expect: {
+    timeout: 20 * 1000,
+  },
   globalSetup:"./global-setup",
   testDir: './tests/',
   /* Run tests in files in parallel */
@@ -29,6 +30,9 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
+    // launchOptions:{
+    //   slowMo:3000
+    // },
      baseURL: 'https://stage.helpdesk.hypertalk.net/back-office/',
      //baseURL: 'https://www.google.com/',
 
