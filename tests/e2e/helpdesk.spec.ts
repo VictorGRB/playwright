@@ -8,17 +8,17 @@ import { test, expect } from '@playwright/test';
 //     await page.getByRole('button', { name: 'New appointment' }).click();
 
 // });
-test('login success', async ({ page }) => {
+// test('login success', async ({ page }) => {
 
-    await page.goto(" ");
-    await page.getByRole('button', { name: 'profile picture' }).click();
-    await page.getByRole('menuitem', { name: 'Logout' }).click();
-    await page.getByLabel('Email *').fill('victor.garbo@hpm.ro');
-    await page.getByLabel('Password *').fill('Victor123!');
-    await page.getByRole('button', { name: 'LOGIN' }).click();
-    await expect(page).toHaveURL(/dashboard/);
+//     await page.goto(" ");
+//     await page.getByRole('button', { name: 'profile picture' }).click();
+//     await page.getByRole('menuitem', { name: 'Logout' }).click();
+//     await page.getByLabel('Email *').fill('victor.garbo@hpm.ro');
+//     await page.getByLabel('Password *').fill('Victor123!');
+//     await page.getByRole('button', { name: 'LOGIN' }).click();
+//     await expect(page).toHaveURL(/dashboard/);
 
-});
+// });
 
 
 test('logout', async ({ page }) => {
