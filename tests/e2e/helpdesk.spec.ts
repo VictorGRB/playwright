@@ -1,5 +1,5 @@
 // @ts-check
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 // test('links', async ({ page }) => {
 
@@ -8,17 +8,55 @@ import { test, expect } from '@playwright/test';
 //     await page.getByRole('button', { name: 'New appointment' }).click();
 
 // });
-// test('login success', async ({ page }) => {
 
-//     await page.goto(" ");
-//     await page.getByRole('button', { name: 'profile picture' }).click();
-//     await page.getByRole('menuitem', { name: 'Logout' }).click();
-//     await page.getByLabel('Email *').fill('victor.garbo@hpm.ro');
-//     await page.getByLabel('Password *').fill('Victor123!');
-//     await page.getByRole('button', { name: 'LOGIN' }).click();
-//     await expect(page).toHaveURL(/dashboard/);
+async function addToCart(page: Page) {
+    await page.getByRole('menuitem', { name: 'Women' }).hover();
+    await page.getByRole('menuitem', { name: 'Tops' }).hover();
+    await page.getByRole('menuitem', { name: 'Jackets' }).click();
+    await page.getByLabel('Items').getByText('Jackets').isVisible();
+    await page.locator('li').filter({ hasText: 'Olivia 1/4 Zip Light Jacket' }).getByLabel('M', { exact: true }).click();
+    await page.locator('li').filter({ hasText: 'Olivia 1/4 Zip Light Jacket' }).getByLabel('Purple').click();
+    await page.locator('li').filter({ hasText: 'Olivia 1/4 Zip Light Jacket' }).locator('button').click();
+}
+test('Place Order with Table Rate', async ({ page }) => {
 
-// });
+    await page.goto("");
+
+    await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
+    await addToCart(page);
+    await page.waitForTimeout(3000);
+    await page.getByRole('link', { name: 'My Cart' }).click();
+    await page.waitForTimeout(1000);
+    await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
+    await page.getByText('Shipping Address').isVisible();
+
+    await page.getByLabel('Table Rate').check();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByText('Payment Method', { exact: true }).isVisible();
+    await page.getByRole('button', { name: 'Place Order' }).click();
+    await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
+
+});
+
+test('Place Order with Fixed Rate', async ({ page }) => {
+
+    await page.goto("");
+
+    await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
+    await addToCart(page);
+    await page.waitForTimeout(3000);
+    await page.getByRole('link', { name: 'My Cart' }).click();
+    await page.waitForTimeout(1000);
+    await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
+    await page.getByText('Shipping Address').isVisible();
+
+    await page.getByLabel('Fixed').check();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByText('Payment Method', { exact: true }).isVisible();
+    await page.getByRole('button', { name: 'Place Order' }).click();
+    await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
+
+});
 
 
 test('logout', async ({ page }) => {

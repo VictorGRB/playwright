@@ -12,9 +12,9 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 
   // timeout:80000,
-  expect: {
-    timeout: 20 * 1000,
-  },
+  // expect: {
+  //   timeout: 20 * 1000,
+  // },
   globalSetup:"./global-setup",
   testDir: './tests/',
   /* Run tests in files in parallel */
@@ -31,9 +31,9 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // launchOptions:{
-    //   slowMo:3000
+    //   slowMo:2000
     // },
-     baseURL: 'https://stage.helpdesk.hypertalk.net/back-office/',
+     baseURL: 'https://magento.softwaretestingboard.com/',
      //baseURL: 'https://www.google.com/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
