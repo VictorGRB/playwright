@@ -2,10 +2,10 @@
   "cookies": [
     {
       "name": "_fbp",
-      "value": "fb.1.1706082270802.1146038679",
+      "value": "fb.1.1706189335304.1517555157",
       "domain": ".softwaretestingboard.com",
       "path": "/",
-      "expires": 1713858271,
+      "expires": 1713965335,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -15,7 +15,7 @@
       "value": "%7B%7D",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -25,7 +25,7 @@
       "value": "%7B%7D",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -35,27 +35,27 @@
       "value": "true",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "_ga",
-      "value": "GA1.2.1868338120.1706082272",
+      "value": "GA1.2.329737789.1706189336",
       "domain": ".softwaretestingboard.com",
       "path": "/",
-      "expires": 1740642271.887858,
+      "expires": 1740749336.491378,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "_gid",
-      "value": "GA1.2.649061696.1706082272",
+      "value": "GA1.2.736735064.1706189336",
       "domain": ".softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -65,7 +65,7 @@
       "value": "1",
       "domain": ".softwaretestingboard.com",
       "path": "/",
-      "expires": 1706082331,
+      "expires": 1706189396,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -75,7 +75,7 @@
       "value": "",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706085871,
+      "expires": 1706192936,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Strict"
@@ -85,7 +85,7 @@
       "value": "%7B%7D",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -95,7 +95,7 @@
       "value": "%7B%7D",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -105,7 +105,7 @@
       "value": "%7B%7D",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -115,7 +115,7 @@
       "value": "%7B%7D",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -125,37 +125,37 @@
       "value": "%7B%7D",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706168671,
+      "expires": 1706275736,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "_ga_1SPG0WZDNF",
-      "value": "GS1.2.1706082272.1.0.1706082272.60.0.0",
+      "value": "GS1.2.1706189337.1.0.1706189337.60.0.0",
       "domain": ".softwaretestingboard.com",
       "path": "/",
-      "expires": 1740642272.141201,
+      "expires": 1740749337.116567,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "private_content_version",
-      "value": "23046f5ac6b6f1bbb233cd382b86fa65",
+      "value": "90f7d043e01459570f26ceeac7b7ba13",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1740642272.931794,
+      "expires": 1740749337.179814,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "PHPSESSID",
-      "value": "4ce4e30c624e1589352b63dfd1da6dff",
+      "value": "4888c519347c8faae756163728cecb56",
       "domain": ".magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706085875.234157,
+      "expires": 1706192938.953368,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
@@ -165,7 +165,7 @@
       "value": "9bf9a599123e6402b85cde67144717a08b817412",
       "domain": "magento.softwaretestingboard.com",
       "path": "/",
-      "expires": 1706085875.2343,
+      "expires": 1706192938.953513,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
@@ -189,7 +189,7 @@
         },
         {
           "name": "mage-cache-timeout",
-          "value": "\"2024-01-24T08:44:31.805Z\""
+          "value": "\"2024-01-25T14:28:56.154Z\""
         },
         {
           "name": "lastExternalReferrer",
@@ -201,7 +201,7 @@
         },
         {
           "name": "lastExternalReferrerTime",
-          "value": "1706082270795"
+          "value": "1706189335294"
         },
         {
           "name": "recently_viewed_product",
