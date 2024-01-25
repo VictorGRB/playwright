@@ -1,14 +1,5 @@
 // @ts-check
 import { test, expect, Page } from '@playwright/test';
-import { TIMEOUT } from 'dns';
-
-// test('links', async ({ page }) => {
-
-//     await page.goto("/dashboard/schedule");
-//     await expect(page).toHaveURL(/schedule/);
-//     await page.getByRole('button', { name: 'New appointment' }).click();
-
-// });
 
 async function addToCart(page: Page) {
     await page.getByRole('menuitem', { name: 'Women' }).hover();
@@ -25,7 +16,6 @@ async function retryProceed(page: Page) {
 
         await page.getByRole('link', { name: 'My Cart' }).click();
         retryProceed(page);
-
     }
 }
 
@@ -52,14 +42,12 @@ test('Place Order with Table Rate', async ({ page }) => {
     //expect(await page.getByText('Thank you for your purchase!', {exact: true}).isVisible()).toBe(true);
     //await expect (page.getByText('Thank you for your purchase!').isVisible());
     //await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
-    //expect (await page.getByText('Thank you for your purchase!').isVisible());
+    expect (await page.getByText('Thank you for your purchase!').isVisible());
     //expect (await page.getByText('Thank you for your purchase!').isVisible()).toBe(true);
     //expect (await page.getByText('Thank you for your purchase!')).toBeVisible();
     await expect(page.getByText('Thank you for your purchase!', { exact: true })).toBeVisible({ timeout: 7000 });
-    //expect (page).tohave
-    //await page.locator('[id="mat-input-2"]').fill('victorgarbo@hpm.ro');
-    //expect (page.locator('[class="page-title"]')).toHaveText("Thank you for your purchase!")
 
+//*[@id="ship_0_592234_address"]#ship_0_592234_address
 });
 
 test('Place Order with Fixed Rate', async ({ page }) => {
@@ -71,11 +59,7 @@ test('Place Order with Fixed Rate', async ({ page }) => {
     await page.waitForTimeout(3000);
     await page.getByRole('link', { name: 'My Cart' }).click();
     await page.waitForTimeout(1000);
-    if (await page.getByRole('button', { name: 'Proceed to Checkout' }).isHidden()) {
-
-        await page.getByRole('link', { name: 'My Cart' }).click();
-
-    }
+    await retryProceed(page);
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
     await page.getByText('Shipping Address').isVisible();
 
@@ -90,6 +74,7 @@ test('Place Order with Fixed Rate', async ({ page }) => {
 
 test('Place Order with Discount code', async ({ page }) => {
 
+    test.slow();
     await page.goto("");
 
     await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
@@ -97,11 +82,7 @@ test('Place Order with Discount code', async ({ page }) => {
     await page.waitForTimeout(3000);
     await page.getByRole('link', { name: 'My Cart' }).click();
     await page.waitForTimeout(1000);
-    if (await page.getByRole('button', { name: 'Proceed to Checkout' }).isHidden()) {
-
-        await page.getByRole('link', { name: 'My Cart' }).click();
-
-    }
+    await retryProceed(page);
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
     expect(page.getByText('Shipping Address').isVisible());
 
@@ -153,11 +134,7 @@ test('Change shipping method', async ({ page }) => {
     await page.waitForTimeout(3000);
     await page.getByRole('link', { name: 'My Cart' }).click();
     await page.waitForTimeout(1000);
-    if (await page.getByRole('button', { name: 'Proceed to Checkout' }).isHidden()) {
-
-        await page.getByRole('link', { name: 'My Cart' }).click();
-
-    }
+    await retryProceed(page);
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
     await page.getByText('Shipping Address').isVisible();
 
@@ -217,7 +194,6 @@ test('Place Order with Reorder', async ({ page }) => {
     await page.goto("");
 
     await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
-    //await page.getByRole('banner').getByText('Welcome, Victor Garbo!').click();
     await page.getByRole('banner').locator('button').filter({ hasText: 'Change' }).click();
     await page.getByRole('link', { name: 'My Account' }).click();
     await page.getByRole('link', { name: 'Reorder' }).first().click();
