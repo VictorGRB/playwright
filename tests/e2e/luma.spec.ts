@@ -40,11 +40,7 @@ test('Place Order with Table Rate', async ({ page }) => {
     await page.getByRole('link', { name: 'My Cart' }).click();
     await page.waitForTimeout(1000);
     await retryProceed(page);
-    // if (await page.getByRole('button', { name: 'Proceed to Checkout' }).isHidden()) {
-
-    //     await page.getByRole('link', { name: 'My Cart' }).click();
-
-    // }
+   
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
     await page.getByText('Shipping Address').isVisible();
 
@@ -144,7 +140,7 @@ test('Place Order with Discount code', async ({ page }) => {
 
     await page.getByRole('button', { name: 'Place Order' }).click();
     await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
-    //expect(page.getByText('Thank you for your purchase!', { exact: true }).isVisible());
+
 
 });
 
@@ -240,6 +236,7 @@ test('Place Order with Reorder', async ({ page }) => {
 
 test('Place Order with multiple addresses ', async ({ page }) => {
 
+    test.setTimeout(50000);
     await page.goto("");
 
     await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
@@ -253,15 +250,13 @@ test('Place Order with multiple addresses ', async ({ page }) => {
     await page.getByRole('link', { name: 'View and Edit Cart' }).click();
     await page.getByRole('spinbutton', { name: 'Qty' }).fill('3');
     await page.getByRole('button', { name: 'Update Shopping Cart' }).click();
-    //await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
-    //await page.getByLabel('Fixed').check();
     await page.getByRole('link', { name: 'Check Out with Multiple Addresses' }).click();
     // await page.locator('#ship_0_591742_address').selectOption('24553');
     // await page.locator('#ship_1_591742_address').selectOption('24554');
     // await page.locator('#ship_2_591742_address').selectOption('24555');
     await page.getByRole('button', { name: 'Go to Shipping Information' }).click();
     await page.getByRole('button', { name: 'Go to Shipping Information' }).click();
-    //await page.getByLabel('Table Rate $').check();
+    await page.getByLabel('Table Rate $').check();
     // await page.locator('#s_method_727830_tablerate_bestway').check();
     // await page.locator('#s_method_727831_tablerate_bestway').check();
     // await page.locator('#s_method_727832_flatrate_flatrate').check();

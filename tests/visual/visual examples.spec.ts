@@ -1,84 +1,63 @@
 // @ts-check
-import { test, expect } from '@playwright/test';
+import { test, expect,Page } from '@playwright/test';
 
-test('dashboard', async ({ page }) => {
+async function addToCart(page: Page) {
+    await page.getByRole('menuitem', { name: 'Women' }).hover();
+    await page.getByRole('menuitem', { name: 'Tops' }).hover();
+    await page.getByRole('menuitem', { name: 'Jackets' }).click();
+    await page.getByLabel('Items').getByText('Jackets').isVisible();
+    await page.locator('li').filter({ hasText: 'Olivia 1/4 Zip Light Jacket' }).getByLabel('M', { exact: true }).click();
+    await page.locator('li').filter({ hasText: 'Olivia 1/4 Zip Light Jacket' }).getByLabel('Purple').click();
+    await page.locator('li').filter({ hasText: 'Olivia 1/4 Zip Light Jacket' }).locator('button').click();
+}
 
+async function retryProceed(page: Page) {
+    if (await page.getByRole('button', { name: 'Proceed to Checkout' }).isHidden()) {
+
+        await page.getByRole('link', { name: 'My Cart' }).click();
+        retryProceed(page);
+
+    }
+}
+
+test('home', async ({ page }) => {
+
+    test.slow();
     await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
+    await expect(page.getByText('What\'s New')).toBeVisible();
     await page.waitForTimeout(1000)
-    expect (await page.screenshot()).toMatchSnapshot('victor.png');
+    //Homepage screenshot assertion
+    expect (await page.screenshot()).toMatchSnapshot('homepage.png');
 
-});  
+    await addToCart(page);
+    await page.waitForTimeout(3000);
+    await page.getByRole('link', { name: 'My Cart' }).click();
+    await page.waitForTimeout(3000);
+    await retryProceed(page);
 
-test('header', async ({ page }) => {
+    //Cart screenshot assertion
+    await page.waitForTimeout(5000);
+    expect (await page.screenshot()).toMatchSnapshot('cart.png');
+   
+    await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
+    await page.getByText('Shipping Address').isVisible();
 
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await expect(await page.locator('mat-toolbar').screenshot()).toMatchSnapshot('header.png');
+    //Shipping screenshot assertion
+    await page.waitForTimeout(5000);
+    expect (await page.screenshot()).toMatchSnapshot('shipping.png');
 
-});  
+    await page.getByLabel('Table Rate').check();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByText('Payment Method', { exact: true }).isVisible();
 
-test('hamburger', async ({ page }) => {
+    //Payment screenshot assertion
+    await page.waitForTimeout(5000);
+    expect (await page.screenshot()).toMatchSnapshot('payment.png');
 
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await expect(await page.getByText('lunch_dining').screenshot()).toMatchSnapshot('hamburger.png');
+    await page.getByRole('button', { name: 'Place Order' }).click();
+    await expect(page.getByText('Thank you for your purchase!', { exact: true })).toBeVisible({ timeout: 7000 });
 
-});  
-
-test('admin icon', async ({ page }) => {
-
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await expect(await page.getByText('admin_panel_settings').screenshot()).toMatchSnapshot('adminIcon.png');
-
-});  
-
-test('admin role', async ({ page }) => {
-
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await expect(await page.locator(':text-is("Admin")').screenshot()).toMatchSnapshot('admin.png');
-
-});  
-
-test('callers waiting', async ({ page }) => {
-
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await expect(await page.locator(':text-is("Callers waiting:")').screenshot({mask:[page.locator('#number-of-callers-waiting')]})).toMatchSnapshot('callers.png');
-
-});  
-
-test('change language', async ({ page }) => {
-
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await expect(await page.locator('[alt="Change language"]').screenshot()).toMatchSnapshot('change language.png');
-
-});  
-
-test('user status', async ({ page }) => {
-
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await expect(await page.locator('#status-button').screenshot()).toMatchSnapshot('user status.png');
-
-});  
-
-test('change password page', async ({ page }) => {
-
-    await page.goto(" ");
-    await expect(page.getByText('Speech recognition')).toBeVisible();
-    await page.waitForTimeout(1000)
-    await page.getByText('vpn_key').click();
-    await expect(await page.locator('[role="dialog"]').screenshot()).toMatchSnapshot('change password.png');
+    //Thanks screenshot assertion
+    expect (await page.screenshot()).toMatchSnapshot('thanks.png');
 
 });  
