@@ -1,5 +1,5 @@
 // @ts-check
-import { test, expect,Page } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 async function addToCart(page: Page) {
     await page.getByRole('menuitem', { name: 'Women' }).hover();
@@ -20,14 +20,14 @@ async function retryProceed(page: Page) {
     }
 }
 
-test('home', async ({ page }) => {
+test('purchase flow', async ({ page }) => {
 
     test.slow();
     await page.goto(" ");
     await expect(page.getByText('What\'s New')).toBeVisible();
-    await page.waitForTimeout(1000)
+    await page.waitForTimeout(1000);
     //Homepage screenshot assertion
-    expect (await page.screenshot()).toMatchSnapshot('homepage.png');
+    expect(await page.screenshot()).toMatchSnapshot('homepage.png');
 
     await addToCart(page);
     await page.waitForTimeout(3000);
@@ -37,14 +37,14 @@ test('home', async ({ page }) => {
 
     //Cart screenshot assertion
     await page.waitForTimeout(5000);
-    expect (await page.screenshot()).toMatchSnapshot('cart.png');
-   
+    expect(await page.screenshot()).toMatchSnapshot('cart.png');
+
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
     await page.getByText('Shipping Address').isVisible();
 
     //Shipping screenshot assertion
     await page.waitForTimeout(5000);
-    expect (await page.screenshot()).toMatchSnapshot('shipping.png');
+    expect(await page.screenshot()).toMatchSnapshot('shipping.png');
 
     await page.getByLabel('Table Rate').check();
     await page.getByRole('button', { name: 'Next' }).click();
@@ -52,12 +52,12 @@ test('home', async ({ page }) => {
 
     //Payment screenshot assertion
     await page.waitForTimeout(5000);
-    expect (await page.screenshot()).toMatchSnapshot('payment.png');
+    expect(await page.screenshot()).toMatchSnapshot('payment.png');
 
     await page.getByRole('button', { name: 'Place Order' }).click();
-    await expect(page.getByText('Thank you for your purchase!', { exact: true })).toBeVisible({ timeout: 7000 });
+    expect(await page.getByText('Thank you for your purchase!').isVisible());
 
     //Thanks screenshot assertion
-    expect (await page.screenshot({mask:[page.getByText('Your order number is:')]})).toMatchSnapshot('thanks.png');
+    expect(await page.screenshot({ mask: [page.getByText('Your order number is:')] })).toMatchSnapshot('thanks.png');
 
 });  

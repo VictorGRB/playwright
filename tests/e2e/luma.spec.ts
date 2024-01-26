@@ -19,6 +19,15 @@ async function retryProceed(page: Page) {
     }
 }
 
+async function accountAccess(page: Page) {
+    if (await page.getByRole('link', { name: 'My Account' }).isHidden()) {
+
+        await page.getByRole('banner').locator('button').filter({ hasText: 'Change' }).click();
+
+        accountAccess(page);
+    }
+}
+
 test('Place Order with Table Rate', async ({ page }) => {
 
     await page.goto("");
@@ -30,7 +39,7 @@ test('Place Order with Table Rate', async ({ page }) => {
     await page.getByRole('link', { name: 'My Cart' }).click();
     await page.waitForTimeout(1000);
     await retryProceed(page);
-   
+
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
     await page.getByText('Shipping Address').isVisible();
 
@@ -38,9 +47,9 @@ test('Place Order with Table Rate', async ({ page }) => {
     await page.getByRole('button', { name: 'Next' }).click();
     await page.getByText('Payment Method', { exact: true }).isVisible();
     await page.getByRole('button', { name: 'Place Order' }).click();
- 
-    expect (await page.getByText('Thank you for your purchase!').isVisible());
- 
+
+    expect(await page.getByText('Thank you for your purchase!').isVisible());
+
 
 });
 
@@ -170,14 +179,10 @@ test('Place Order with Cart editing', async ({ page }) => {
     //Edit cart
     await page.getByRole('spinbutton', { name: 'Qty' }).fill('3');
     await page.getByRole('button', { name: 'Update Shopping Cart' }).click();
-    //await page.getByLabel('Table Rate').check({ timeout: 7000 });
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
     await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
-    //await page.getByRole('button', { name: 'Next' }).click()
-
     await page.getByText('Shipping Address').isVisible();
-
     await page.getByLabel('Table Rate').check({ timeout: 7000 });
     await page.getByRole('button', { name: 'Next' }).click();
     await page.getByText('Payment Method', { exact: true }).isVisible();
@@ -189,10 +194,11 @@ test('Place Order with Cart editing', async ({ page }) => {
 
 test('Place Order with Reorder', async ({ page }) => {
 
+    test.slow();
     await page.goto("");
 
     await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
-    await page.getByRole('banner').locator('button').filter({ hasText: 'Change' }).click();
+    accountAccess(page);
     await page.getByRole('link', { name: 'My Account' }).click();
     await page.getByRole('link', { name: 'Reorder' }).first().click();
 
@@ -209,7 +215,7 @@ test('Place Order with Reorder', async ({ page }) => {
 
 test('Place Order with multiple addresses ', async ({ page }) => {
 
-    test.setTimeout(50000);
+    test.slow();
     await page.goto("");
 
     await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
@@ -224,15 +230,9 @@ test('Place Order with multiple addresses ', async ({ page }) => {
     await page.getByRole('spinbutton', { name: 'Qty' }).fill('3');
     await page.getByRole('button', { name: 'Update Shopping Cart' }).click();
     await page.getByRole('link', { name: 'Check Out with Multiple Addresses' }).click();
-    // await page.locator('#ship_0_591742_address').selectOption('24553');
-    // await page.locator('#ship_1_591742_address').selectOption('24554');
-    // await page.locator('#ship_2_591742_address').selectOption('24555');
     await page.getByRole('button', { name: 'Go to Shipping Information' }).click();
     await page.getByRole('button', { name: 'Go to Shipping Information' }).click();
     await page.getByLabel('Table Rate $').check();
-    // await page.locator('#s_method_727830_tablerate_bestway').check();
-    // await page.locator('#s_method_727831_tablerate_bestway').check();
-    // await page.locator('#s_method_727832_flatrate_flatrate').check();
     await page.getByRole('button', { name: 'Continue to Billing Information' }).click();
     await page.getByRole('button', { name: 'Go to Review Your Order' }).click();
     await page.getByRole('button', { name: 'Place Order' }).click();
