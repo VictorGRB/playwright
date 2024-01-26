@@ -58,6 +58,6 @@ test('home', async ({ page }) => {
     await expect(page.getByText('Thank you for your purchase!', { exact: true })).toBeVisible({ timeout: 7000 });
 
     //Thanks screenshot assertion
-    expect (await page.screenshot()).toMatchSnapshot('thanks.png');
+    expect (await page.screenshot({mask:[page.getByText('Your order number is:')]})).toMatchSnapshot('thanks.png');
 
 });  

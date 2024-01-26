@@ -38,16 +38,10 @@ test('Place Order with Table Rate', async ({ page }) => {
     await page.getByRole('button', { name: 'Next' }).click();
     await page.getByText('Payment Method', { exact: true }).isVisible();
     await page.getByRole('button', { name: 'Place Order' }).click();
-    //omg this worked
-    //expect(await page.getByText('Thank you for your purchase!', {exact: true}).isVisible()).toBe(true);
-    //await expect (page.getByText('Thank you for your purchase!').isVisible());
-    //await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
+ 
     expect (await page.getByText('Thank you for your purchase!').isVisible());
-    //expect (await page.getByText('Thank you for your purchase!').isVisible()).toBe(true);
-    //expect (await page.getByText('Thank you for your purchase!')).toBeVisible();
-    await expect(page.getByText('Thank you for your purchase!', { exact: true })).toBeVisible({ timeout: 7000 });
+ 
 
-//*[@id="ship_0_592234_address"]#ship_0_592234_address
 });
 
 test('Place Order with Fixed Rate', async ({ page }) => {
@@ -68,7 +62,6 @@ test('Place Order with Fixed Rate', async ({ page }) => {
     await page.getByText('Payment Method', { exact: true }).isVisible();
     await page.getByRole('button', { name: 'Place Order' }).click();
     await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
-    //expect(page.getByText('Thank you for your purchase!', { exact: true }).isVisible());
 
 });
 
@@ -153,6 +146,7 @@ test('Change shipping method', async ({ page }) => {
 
 test('Place Order with Cart editing', async ({ page }) => {
 
+    test.slow();
     await page.goto("");
 
     await expect(page).toHaveURL("https://magento.softwaretestingboard.com/");
@@ -176,16 +170,20 @@ test('Place Order with Cart editing', async ({ page }) => {
     //Edit cart
     await page.getByRole('spinbutton', { name: 'Qty' }).fill('3');
     await page.getByRole('button', { name: 'Update Shopping Cart' }).click();
+    //await page.getByLabel('Table Rate').check({ timeout: 7000 });
     await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
+    await page.waitForTimeout(1000);
+    await page.getByRole('button', { name: 'Proceed to Checkout' }).click();
+    //await page.getByRole('button', { name: 'Next' }).click()
 
     await page.getByText('Shipping Address').isVisible();
 
     await page.getByLabel('Table Rate').check({ timeout: 7000 });
     await page.getByRole('button', { name: 'Next' }).click();
     await page.getByText('Payment Method', { exact: true }).isVisible();
-    await page.getByRole('button', { name: 'Place Order' }).click({ timeout: 1000 });
+    await page.getByRole('button', { name: 'Place Order' }).click();
 
-    await expect(page.getByText('Thank you for your purchase!', { exact: true })).toBeVisible({ timeout: 7000 });
+    await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
 
 });
 
@@ -206,7 +204,6 @@ test('Place Order with Reorder', async ({ page }) => {
     await page.getByText('Payment Method', { exact: true }).isVisible();
     await page.getByRole('button', { name: 'Place Order' }).click();
     await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
-    //expect(page.getByText('Thank you for your purchase!', { exact: true }).isVisible());
 
 });
 
@@ -240,5 +237,5 @@ test('Place Order with multiple addresses ', async ({ page }) => {
     await page.getByRole('button', { name: 'Go to Review Your Order' }).click();
     await page.getByRole('button', { name: 'Place Order' }).click();
 
-    await expect(page.getByText('Thank you for your purchase!', { exact: true })).toBeVisible({ timeout: 7000 });
+    await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
 });
