@@ -230,7 +230,8 @@ test('Place Order with multiple addresses ', async ({ page }) => {
     await page.getByRole('spinbutton', { name: 'Qty' }).fill('3');
     await page.getByRole('button', { name: 'Update Shopping Cart' }).click();
     await page.getByRole('link', { name: 'Check Out with Multiple Addresses' }).click();
-    await page.locator(':is(select):where([name^="ship[0]"][name$="[address]"])').selectOption('24553');
+    //await page.locator(':is(select):where([name^="ship[0]"][name$="[address]"])').selectOption('24553');
+    await page.locator('select[name^="ship[0]["][name$="[address]"]').selectOption('24553');
     await page.getByRole('button', { name: 'Go to Shipping Information' }).click();
     await page.waitForTimeout(3000);
     await page.getByRole('button', { name: 'Go to Shipping Information' }).click();
