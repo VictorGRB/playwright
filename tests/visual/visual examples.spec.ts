@@ -16,7 +16,6 @@ async function retryProceed(page: Page) {
 
         await page.getByRole('link', { name: 'My Cart' }).click();
         retryProceed(page);
-
     }
 }
 

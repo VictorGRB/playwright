@@ -23,7 +23,6 @@ async function accountAccess(page: Page) {
     if (await page.getByRole('link', { name: 'My Account' }).isHidden()) {
 
         await page.getByRole('banner').locator('button').filter({ hasText: 'Change' }).click();
-
         accountAccess(page);
     }
 }
@@ -49,7 +48,6 @@ test('Place Order with Table Rate', async ({ page }) => {
     await page.getByRole('button', { name: 'Place Order' }).click();
 
     expect(await page.getByText('Thank you for your purchase!').isVisible());
-
 
 });
 
@@ -123,7 +121,6 @@ test('Place Order with Discount code', async ({ page }) => {
 
     await page.getByRole('button', { name: 'Place Order' }).click();
     await page.getByText('Thank you for your purchase!', { exact: true }).isVisible();
-
 
 });
 
