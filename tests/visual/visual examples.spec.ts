@@ -25,7 +25,7 @@ test('purchase flow', async ({ page }) => {
     await page.goto(" ");
     await expect(page.getByText('What\'s New')).toBeVisible();
     await page.waitForTimeout(1000);
-    //Homepage screenshot assertion 
+    //Homepage screenshot assertion
     expect(await page.screenshot()).toMatchSnapshot('homepage.png');
 
     await addToCart(page);
