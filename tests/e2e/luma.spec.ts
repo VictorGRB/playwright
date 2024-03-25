@@ -24,7 +24,7 @@ async function accountAccess(page: Page) {
 
         await page.getByRole('banner').locator('button').filter({ hasText: 'Change' }).click();
         accountAccess(page);
-    }
+    } 
 }
 
 test('Place Order with Table Rate', async ({ page }) => {
